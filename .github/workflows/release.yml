@@ -54,10 +54,10 @@ jobs:
           allowUpdates: true
           omitBody: true
           artifacts: bombsquad_server_egg_x86_64.tar
-      # - name: Push to github image repository
-      #   run: |
-      #     docker tag bombsquad_egg:latest ghcr.io/${GITHUB_REPOSITORY,,}/bombsquad_egg:debug_${{ github.ref_name }}_x86_64
-      #     docker push ghcr.io/${GITHUB_REPOSITORY,,}/bombsquad_egg:debug_${{ github.ref_name }}_x86_64
+      - name: Push to github image repository
+        run: |
+          docker tag bombsquad_egg:latest ghcr.io/${GITHUB_REPOSITORY,,}/bombsquad_egg:debug_${{ github.ref_name }}_x86_64
+          docker push ghcr.io/${GITHUB_REPOSITORY,,}/bombsquad_egg:debug_${{ github.ref_name }}_x86_64
 
   release_docker_arm64_server_release_image:
     runs-on: ubuntu-24.04-arm
@@ -84,10 +84,10 @@ jobs:
           allowUpdates: true
           omitBody: true
           artifacts: bombsquad_server_egg_arm64.tar
-      # - name: Push to github image repository
-      #   run: |
-      #     docker tag bombsquad_egg:latest ghcr.io/${GITHUB_REPOSITORY,,}/bombsquad_egg:debug_${{ github.ref_name }}_arm64
-      #     docker push ghcr.io/${GITHUB_REPOSITORY,,}/bombsquad_egg:debug_${{ github.ref_name }}_arm64
+      - name: Push to github image repository
+        run: |
+          docker tag bombsquad_egg:latest ghcr.io/${GITHUB_REPOSITORY,,}/bombsquad_egg:debug_${{ github.ref_name }}_arm64
+          docker push ghcr.io/${GITHUB_REPOSITORY,,}/bombsquad_egg:debug_${{ github.ref_name }}_arm64
   
   # manifest_docker_server_multiarch:
   #   needs:

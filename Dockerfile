@@ -28,7 +28,8 @@ RUN useradd -m -s /bin/bash container && \
     apt-get update && \    
     apt-get install -y python3.13-dev && \                                                         
     apt-get clean && \                                                        
-    python3.13 -c "import uuid; print(uuid.uuid4())" > /etc/machine-id 
+    python3.13 -c "import uuid; print(uuid.uuid4())" > /etc/machine-id  \
+    mkdir -p /home/me
 
 # Switch to container user
 USER container

@@ -40,6 +40,10 @@ ENV USER=container HOME=/home/container
 WORKDIR /home/container
 COPY ./entrypoint.sh /entrypoint.sh
 
+# Set permissions
+USER root
+RUN chmod +x /entrypoint.sh && chown container:container /entrypoint.sh
+USER container
 # Expose the necessary port
 EXPOSE 43210/udp
 

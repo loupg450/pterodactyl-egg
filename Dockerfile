@@ -1,7 +1,5 @@
 # syntax=docker/dockerfile:1
 
-# if provided it will mark it as debug build
-ARG build_type=Release
 # system to start with the build with
 # currently will break for other images
 ARG base_image=ubuntu:latest
@@ -11,14 +9,7 @@ ARG base_image=ubuntu:latest
 FROM ${base_image} AS runner
 
 # Environment settings
-ENV LANG=en_US.UTF-8
-ENV LANGUAGE=en_US:en
-ENV LC_ALL=en_US.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
-
-# Renew the args
-ARG build_type
-LABEL BOMBSQUAD_BUILD_TYPE=${build_type}
 
 # Install runtime dependencies
 RUN useradd -m -s /bin/bash container && \

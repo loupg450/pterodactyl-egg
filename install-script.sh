@@ -9,11 +9,9 @@ cd /mnt/server
 # Determine Architecture                                                      
 ARCH=$(uname -m)                                                              
 if [ "${ARCH}" == "x86_64" ]; then                                            
-    DOWNLOAD_URL="https://github.com/efroemling/ballistica/releases/latest/do 
-wnload/linux_x86_64_server_debug.tar"                                         
+    DOWNLOAD_URL="https://github.com/efroemling/ballistica/releases/latest/download/linux_x86_64_server_debug.tar"                                         
 elif [ "${ARCH}" == "aarch64" ]; then                                         
-    DOWNLOAD_URL="https://github.com/efroemling/ballistica/releases/latest/do 
-wnload/linux_arm64_server_debug.tar"                                          
+    DOWNLOAD_URL="https://github.com/efroemling/ballistica/releases/latest/download/linux_arm64_server_debug.tar"                                          
 else                                                                          
     echo "Unsupported architecture: ${ARCH}"                                  
     exit 1                                                                    

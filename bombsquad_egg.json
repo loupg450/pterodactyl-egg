@@ -1,0 +1,31 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2026-01-09T15:13:35+01:00",
+    "name": "Bombsquad_egg",
+    "author": "loupg450@gmail.com",
+    "description": null,
+    "features": null,
+    "docker_images": {
+        "ghcr.io\/loupg450\/pterodactyl-egg\/bombsquad_egg:debug_v0.0.13alpha_x86_64": "ghcr.io\/loupg450\/pterodactyl-egg\/bombsquad_egg:debug_v0.0.13alpha_x86_64"
+    },
+    "file_denylist": [],
+    "startup": ".\/ballisticakit_server",
+    "config": {
+        "files": "{}",
+        "startup": "{}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n# Pterodactyl BombSquad Install Script\r\n\r\napt update\r\napt install -y curl tar jq\r\n\r\ncd \/mnt\/server\r\n\r\n# Determine Architecture\r\nARCH=$(uname -m)\r\nif [ \"${ARCH}\" == \"x86_64\" ]; then\r\n    DOWNLOAD_URL=\"https:\/\/github.com\/efroemling\/ballistica\/releases\/latest\/download\/linux_x86_64_server_debug.tar\"\r\nelif [ \"${ARCH}\" == \"aarch64\" ]; then\r\n    DOWNLOAD_URL=\"https:\/\/github.com\/efroemling\/ballistica\/releases\/latest\/download\/linux_arm64_server_debug.tar\"\r\nelse\r\n    echo \"Unsupported architecture: ${ARCH}\"\r\n    exit 1\r\nfi\r\n\r\necho \"Downloading BombSquad Server from ${DOWNLOAD_URL}...\"\r\ncurl -L -o server.tar ${DOWNLOAD_URL}\r\n\r\necho \"Extracting files...\"\r\ntar -xf server.tar --strip-components=5 \"build\/prefab\/full\/linux_${ARCH\/aarch64\/arm64}_server\/debug\/\"\r\n\r\n# Clean up\r\nrm server.tar\r\necho \"Install complete.\"",
+            "container": "ubuntu:latest",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": []
+}

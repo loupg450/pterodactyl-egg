@@ -61,6 +61,7 @@ jobs:
           docker push ghcr.io/${GITHUB_REPOSITORY,,}/bombsquad_egg:debug_${{ github.ref_name }}_x86_64
 
   release_docker_arm64_server_release_image:
+    needs: [create_release]
     runs-on: ubuntu-24.04-arm
     steps:
       - uses: actions/checkout@v4

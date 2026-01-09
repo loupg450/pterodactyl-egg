@@ -29,7 +29,8 @@ RUN useradd -m -s /bin/bash container && \
     apt-get install -y python3.13-dev && \                                                         
     apt-get clean && \                                                        
     python3.13 -c "import uuid; print(uuid.uuid4())" > /etc/machine-id  \
-    mkdir -p /home/me
+    mkdir -p /home/me \
+    echo "/home/me created"
 
 # Switch to container user
 USER container

@@ -36,17 +36,9 @@ RUN useradd -m -s /bin/bash container && \
 USER container
 ENV USER=container HOME=/home/container
 
-# Copy the compiled application from the builder stage
-COPY bs_server/* /home/me
-
 # Set the working directory
 WORKDIR /home/container
 COPY ./entrypoint.sh /entrypoint.sh
-
-# Set permissions
-USER root
-RUN chmod +x /entrypoint.sh && chown -R container:container /home/me
-USER container
 
 # Expose the necessary port
 EXPOSE 43210/udp
